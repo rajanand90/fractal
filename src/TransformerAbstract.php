@@ -159,7 +159,8 @@ abstract class TransformerAbstract
             if ($childScope->getResource() instanceof Primitive) {
                 $includedData[$include] = $childScope->transformPrimitiveResource();
             } else {
-                $includedData[$include] = $childScope->toArray();
+                $dataList = $childScope->toArray();
+                $includedData[$include] = isset($dataList['data']) ? $dataList['data'] : $dataList;
             }
         }
 
